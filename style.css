@@ -14,17 +14,17 @@ nav a {
     display: flex;
     align-items: flex-start;
 }
-.app > * {
+main > * {
     display: none;
 }
-.app > *:last-child {
+main > *:last-child {
     display: block;
 }
-.app > *:target {
+main > *:target {
     display: block;
     animation: fade 300ms linear 1;
 }
-.app > *:target ~ * {
+main > *:target ~ * {
     display: none;
 }
 body {
