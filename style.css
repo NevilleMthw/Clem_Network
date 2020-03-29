@@ -1,37 +1,21 @@
 nav ul {
-    margin: 1rem 0;
-    padding: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     list-style: none;
+    background-color: #dcdde1;
+  padding: 0;
 }
 nav a {
     margin: 0 1rem;
     color: #566b78;
     text-decoration: none;
     text-transform: uppercase;
-    display: flex;
-    align-items: flex-start;
-}
-main > * {
-    display: none;
-}
-main > *:last-child {
-    display: block;
-}
-main > *:target {
-    display: block;
-    animation: fade 300ms linear 1;
-}
-main > *:target ~ * {
-    display: none;
 }
 body {
     background-color: white;
     color: #566b78;
     font-family: 'Inconsolata', monospace;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.5;
 }
 h1, h2, strong {
@@ -40,30 +24,11 @@ h1, h2, strong {
 a {
     color: #000;
 }
-header {
-    background-color: gray;
-    line-height: 1.2;
-    padding: 8vw 2em;
+.intro{
     text-align: center;
+    margin-top: 5%;
 }
-header h1 {
-    color: #fff;
-    font-size: 2.5em;
-    text-transform: uppercase;
-}
-header a {
-    border: 2px solid #fff;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 0.8em;
-    letter-spacing: 0.2em;
-    padding: 1em 2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: none 200ms;
-    transition-property: color, border;
-}
-header a:hover {
-    background: crimson;
-    border-color: crimson;
+.about_us{
+    text-align: center;
+    margin-top: 10%;
 }
