@@ -12,10 +12,10 @@ nav a {
     text-transform: uppercase;
 }
 body {
-    background-color: white;
+    background-color: #ecf0f1;
     color: #566b78;
     font-family: 'Inconsolata', monospace;
-    font-size: 120%;
+    font-size: 130%;
     line-height: 1.5;
 }
 h1, h2, strong {
