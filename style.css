@@ -1,16 +1,3 @@
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    background-color: #dcdde1;
-  padding: 0;
-}
-nav a {
-    margin: 0 1rem;
-    color: #566b78;
-    text-decoration: none;
-    text-transform: uppercase;
-}
 body {
     background-color: #ecf0f1;
     color: #566b78;
@@ -26,9 +13,40 @@ a {
 }
 .intro{
     text-align: center;
-    margin-top: 5%;
+    margin-top: 10%;
 }
+ 
 .about_us{
     text-align: center;
     margin-top: 8%;
 }
+
+ul {
+  list-style-type: none;
+  display: flex;
+  padding: 3px 0;
+  background-color: grey;
+  border-radius: 40px;
+  box-shadow: 3px 3px 20px grey; 
+}
+
+
+li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 45px 45px;
+  font-family: 'Inconsolata', monospace;
+  font-weight: lighter;
+  font-size: 24px;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.navigation {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 6%;
+ 
+}
+
