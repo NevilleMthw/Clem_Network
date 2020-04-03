@@ -1,38 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css">
-    <title>Clem_Network</title>
+	<meta charset='UTF-8'>
+	<meta content='width=&lt;device-width&gt;, initial-scale=1.0' name='viewport'>
+	<link href='../style.css' rel='stylesheet' type='text/css'>
+	<title>Clem_Network</title>
 </head>
 <body>
-  <div class = "navigation">
-    <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#">Account</a></li>
-          <li><a href="#">Login/Register</a></li>
-          <li><a href="#">Post</a></li>
-          <li><a href="#">Feed</a></li>
-        </ul>
-      </nav>
-</div>
-      <content>
-        <a name ="home"></a>
-        <div class="container">
-          <div class = "intro">
-                <h1>HELLO!</h1>
-                <p>Welcome to The Clem_Network.</p>
-              </div>
-        <div class = "about-us">
-          <div class = "container">
-            <div class = "about_us">
-            <h1>ABOUT THE WEBSITE</h1>
-            <p>This website was based off of the original Clem character from a game called Warframe. This is a full fledged single page social media website where one can post about their day and more. Hope you like it!</p>
-            </div>
-          </div>
-        </div>
-      </content>
+	<div class='navigation'>
+		<nav>
+			<ul>
+				<li>
+					<a onclick='homeStart()'>Home</a>
+				</li>
+				<li>
+					<a onclick='accountStart()'>Account</a>
+				</li>
+				<li>
+					<a href='#'>Login/Register</a>
+				</li>
+				<li>
+					<a href='#'>Post</a>
+				</li>
+				<li>
+					<a href='#'>Feed</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class='container'>
+		<div class='intro'>
+			<h1>HELLO!</h1>
+			<p>Welcome to The Clem_Network.</p>
+		</div>
+		<div class='about-us'>
+			<div class='container'>
+				<div class='about_us'>
+					<h1>ABOUT THE WEBSITE</h1>
+					<p>This website was based off of the original Clem character from a game called Warframe. This is a full fledged single page social media website where one can post about their day and more. Hope you like it!</p>
+				</div>
+			</div>
+		</div>
+		<script>
+		function homeStart() {
+		  //Set up XMLHttpRequest
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() { //Called when data returns from server
+		      if (this.readyState == 4 && this.status == 200) {
+		          //Convert JSON to a JavaScript object
+		          var docBody = document.getElementsByTagName("body")[0]; //Only one body
+		          docBody.innerHTML = "";
+		          var main = document.createElement("main");
+		          var head = document.createElement("p");
+		          head.innerHTML = this.responseText
+		          docBody.appendChild(head);
+		          docBody.appendChild(main);
+		      }
+		  };
+		  //Request data from all users
+		  xhttp.open("GET", "/home", true);
+		  xhttp.send();
+		}
+		/* Loads the data for the currently selected user.*/
+		function accountStart() {
+		  var docBody = document.getElementsByTagName("body")[0]; //Only one body
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() { //Called when data returns from server
+		      if (this.readyState == 4 && this.status == 200) {
+		          docBody.innerHTML = "";
+		          var main = document.createElement("main");
+		          var h1 = document.createElement("h1");
+		          h1.innerHTML = "Account";
+		          var head = document.createElement("p");
+		          head.innerHTML = this.responseText
+		          docBody.appendChild(head);
+		          docBody.appendChild(main);
+		          docBody.appendChild(h1);
+		      }
+		  };
+		  //Request the data for the specified user.
+		  xhttp.open("GET", "/account", true);
+		  xhttp.send();
+		}
+		</script>
+	</div>
 </body>
 </html>
