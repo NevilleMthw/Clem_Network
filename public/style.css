@@ -1,0 +1,43 @@
+body {
+	background-color: #ecf0f1;
+	color: #566b78;
+	font-family: 'Inconsolata', monospace;
+	font-size: 130%;
+	line-height: 1.5;
+}
+h1, h2, strong {
+	color: #333;
+}
+.intro {
+	text-align: center;
+	margin-top: 10%;
+}
+.about_us {
+	text-align: center;
+	margin-top: 8%;
+}
+ul {
+	list-style-type: none;
+	display: flex;
+	padding: 3px 0;
+	background-color: grey;
+	border-radius: 40px;
+	box-shadow: 3px 3px 20px grey;
+}
+li a {
+	color: #fff;
+	text-decoration: none;
+	padding: 45px 45px;
+	font-family: 'Inconsolata', monospace;
+	font-weight: lighter;
+	font-size: 24px;
+	cursor: pointer;
+	letter-spacing: 1px;
+	opacity: 0.9;
+}
+.navigation {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 6%;
+}
