@@ -5,6 +5,7 @@
 	<meta content='width=&lt;device-width&gt;, initial-scale=1.0' name='viewport'>
 	<link href='../style.css' rel='stylesheet' type='text/css'>
 	<title>Clem_Network</title>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
 </head>
 <body>
 	<div class='navigation'>
@@ -14,10 +15,10 @@
 					<a onclick='homeStart()'>Home</a>
 				</li>
 				<li>
-					<a onclick='accountStart()'>Account</a>
+					<a href="#">Account</a>
 				</li>
 				<li>
-					<a href='#'>Login/Register</a>
+					<a onclick="accountStart()">Login/Register</a>
 				</li>
 				<li>
 					<a href='#'>Post</a>
@@ -28,19 +29,20 @@
 			</ul>
 		</nav>
 	</div>
-	<div class='container'>
+	<div class='con'>
 		<div class='intro'>
 			<h1>HELLO!</h1>
 			<p>Welcome to The Clem_Network.</p>
 		</div>
 		<div class='about-us'>
-			<div class='container'>
+			<div class='con'>
 				<div class='about_us'>
 					<h1>ABOUT THE WEBSITE</h1>
 					<p>This website was based off of the original Clem character from a game called Warframe. This is a full fledged single page social media website where one can post about their day and more. Hope you like it!</p>
 				</div>
 			</div>
 		</div>
+	</div>
 		<script>
 		function homeStart() {
 		  //Set up XMLHttpRequest
@@ -70,19 +72,23 @@
 		          docBody.innerHTML = "";
 		          var main = document.createElement("main");
 		          var h1 = document.createElement("h1");
-		          h1.innerHTML = "Account";
 		          var head = document.createElement("p");
 		          head.innerHTML = this.responseText
 		          docBody.appendChild(head);
 		          docBody.appendChild(main);
-		          docBody.appendChild(h1);
+				  docBody.appendChild(h1);
+				  $('.info-item .btn').click(function(){
+  $('.container').toggleClass('log-in');
+});
+$('.container-form .btn').click(function(){
+  $('.container').addClass('active');
+});
 		      }
 		  };
 		  //Request the data for the specified user.
-		  xhttp.open("GET", "/account", true);
+		  xhttp.open("GET", "/loginregister", true);
 		  xhttp.send();
 		}
 		</script>
-	</div>
 </body>
 </html>

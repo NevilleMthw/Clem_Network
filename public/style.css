@@ -41,3 +41,122 @@ li a {
 	left: 50%;
 	top: 6%;
 }
+.table {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.table-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.container {
+	position: relative;
+	width: 600px;
+	margin-left: 30%;
+	height: 320px;
+	background-color: #80CBC4;
+	margin-top: 15%;
+}
+
+.container .btn {
+	cursor: pointer;
+	text-align: center;
+	margin: 0 auto;
+	width: 80px;
+	color: #fff;
+	background-color: #B0BEC5;
+	transition: 0.5s;
+}
+
+.container .btn:hover {
+	background-color: grey;
+}
+
+.container .btn, .container input {
+	padding: 10px 15px;
+}
+
+.container input {
+	margin: 0 auto 15px;
+	display: block;
+	width: 220px;
+}
+
+.container .container-forms .container-info {
+	text-align: left;
+	font-size: 0;
+}
+
+.container .container-forms .container-info .info-item {
+	text-align: center;
+	font-size: 16px;
+	width: 300px;
+	height: 320px;
+	display: inline-block;
+	vertical-align: top;
+	color: #fff;
+	opacity: 1;
+}
+
+.container .container-forms .container-info .info-item p {
+	font-size: 23px;
+	margin-left:20%;
+}
+
+.container .container-forms .container-info .info-item .btn {
+	background-color: transparent;
+	border: 1px solid #fff;
+	margin-right: 20%;
+}
+
+.container .container-forms .container-info .info-item .table-cell {
+	padding-right: 35px;
+}
+
+.container .container-form {
+	overflow: hidden;
+	position: absolute;
+	left: 30px;
+	top: -30px;
+	width: 305px;
+	height: 380px;
+	background-color: #ECEFF1;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.6s;
+}
+
+.container .form-item {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+}
+
+.container .form-item.sign-up {
+	position: absolute;
+	left: -100%;
+	opacity: 0;
+}
+
+.container.log-in .container-form {
+	left: 265px;
+}
+
+.container.log-in .container-form .form-item.sign-up {
+	left: 0;
+	opacity: 1;
+}
+
+.container.log-in .container-form .form-item.log-in {
+	left: -100%;
+	opacity: 0;
+}
+
+
+
+
