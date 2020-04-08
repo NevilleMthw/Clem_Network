@@ -44,51 +44,51 @@
 		</div>
 	</div>
 		<script>
-		function homeStart() {
-		  //Set up XMLHttpRequest
-		  var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function() { //Called when data returns from server
-		      if (this.readyState == 4 && this.status == 200) {
-		          //Convert JSON to a JavaScript object
-		          var docBody = document.getElementsByTagName("body")[0]; //Only one body
-		          docBody.innerHTML = "";
-		          var main = document.createElement("main");
-		          var head = document.createElement("p");
-		          head.innerHTML = this.responseText
-		          docBody.appendChild(head);
-		          docBody.appendChild(main);
-		      }
-		  };
-		  //Request data from all users
-		  xhttp.open("GET", "/home", true);
-		  xhttp.send();
+function homeStart() {
+	//Set up XMLHttpRequest
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() { //Called when data returns from server
+		if (this.readyState == 4 && this.status == 200) {
+			//Convert JSON to a JavaScript object
+			var docBody = document.getElementsByTagName("body")[0]; //Only one body
+			docBody.innerHTML = "";
+			var main = document.createElement("main");
+			var head = document.createElement("p");
+			head.innerHTML = this.responseText
+			docBody.appendChild(head);
+			docBody.appendChild(main);
 		}
-		/* Loads the data for the currently selected user.*/
-		function accountStart() {
-		  var docBody = document.getElementsByTagName("body")[0]; //Only one body
-		  var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function() { //Called when data returns from server
-		      if (this.readyState == 4 && this.status == 200) {
-		          docBody.innerHTML = "";
-		          var main = document.createElement("main");
-		          var h1 = document.createElement("h1");
-		          var head = document.createElement("p");
-		          head.innerHTML = this.responseText
-		          docBody.appendChild(head);
-		          docBody.appendChild(main);
-				  docBody.appendChild(h1);
-				  $('.info-item .btn').click(function(){
-  $('.container').toggleClass('log-in');
-});
-$('.container-form .btn').click(function(){
-  $('.container').addClass('active');
-});
-		      }
-		  };
-		  //Request the data for the specified user.
-		  xhttp.open("GET", "/loginregister", true);
-		  xhttp.send();
+	};
+	//Request data from all users
+	xhttp.open("GET", "/home", true);
+	xhttp.send();
+}
+/* Loads the data for the currently selected user.*/
+function accountStart() {
+	var docBody = document.getElementsByTagName("body")[0]; //Only one body
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() { //Called when data returns from server
+		if (this.readyState == 4 && this.status == 200) {
+			docBody.innerHTML = "";
+			var main = document.createElement("main");
+			var h1 = document.createElement("h1");
+			var head = document.createElement("p");
+			head.innerHTML = this.responseText
+			docBody.appendChild(head);
+			docBody.appendChild(main);
+			docBody.appendChild(h1);
+			$('.info-item .btn').click(function() {
+				$('.container').toggleClass('log-in');
+			});
+			$('.container-form .btn').click(function() {
+				$('.container').addClass('active');
+			});
 		}
+	};
+	//Request the data for the specified user.
+	xhttp.open("GET", "/loginregister", true);
+	xhttp.send();
+}
 		</script>
 </body>
 </html>
