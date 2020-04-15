@@ -67,6 +67,21 @@ li a {
 	background-color: #B0BEC5;
 	transition: 0.5s;
 }
+.loginregister {
+	margin-left: 35%;
+	margin-top: 10%;
+	cursor: pointer;
+	font-size: 90%;
+	background-color: #63cdda;
+	text-decoration: none;
+	border-radius: 15%;
+	width: 30%;
+	height: 10%;
+	padding: 1%;
+}
+.loginregister:focus {
+	outline: 0;
+}
 .container .btn:hover {
 	background-color: grey;
 }

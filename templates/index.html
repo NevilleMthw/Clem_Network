@@ -5,7 +5,8 @@
 	<meta content='width=&lt;device-width&gt;, initial-scale=1.0' name='viewport'>
 	<link href='../style.css' rel='stylesheet' type='text/css'>
 	<title>Clem_Network</title>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'>
+	</script>
 </head>
 <body>
 	<div class='navigation'>
@@ -15,10 +16,10 @@
 					<a onclick='homeStart()'>Home</a>
 				</li>
 				<li>
-					<a href="#">Account</a>
+					<a href='#'>Account</a>
 				</li>
 				<li>
-					<a onclick="accountStart()">Login/Register</a>
+					<a onclick='accountStart()'>Login/Register</a>
 				</li>
 				<li>
 					<a href='#'>Post</a>
@@ -50,17 +51,17 @@ function homeStart() {
 	xhttp.onreadystatechange = function() { //Called when data returns from server
 		if (this.readyState == 4 && this.status == 200) {
 			//Convert JSON to a JavaScript object
-			var docBody = document.getElementsByTagName("body")[0]; //Only one body
-			docBody.innerHTML = "";
-			var main = document.createElement("main");
-			var head = document.createElement("p");
+			var docBody = document.getElementsByTagName('body')[0]; //Only one body
+			docBody.innerHTML = '';
+			var main = document.createElement('main');
+			var head = document.createElement('p');
 			head.innerHTML = this.responseText
 			docBody.appendChild(head);
 			docBody.appendChild(main);
 		}
 	};
 	//Request data from all users
-	xhttp.open("GET", "/home", true);
+	xhttp.open('GET', '/home', true);
 	xhttp.send();
 }
 /* Loads the data for the currently selected user.*/
@@ -73,7 +74,7 @@ function accountStart() {
 			var main = document.createElement("main");
 			var h1 = document.createElement("h1");
 			var head = document.createElement("p");
-			head.innerHTML = this.responseText
+			head.innerHTML = this.responseText;
 			docBody.appendChild(head);
 			docBody.appendChild(main);
 			docBody.appendChild(h1);
@@ -88,6 +89,61 @@ function accountStart() {
 	//Request the data for the specified user.
 	xhttp.open("GET", "/loginregister", true);
 	xhttp.send();
+}
+
+function login() {
+	var user = document.getElementById('user').value;
+	var pass = document.getElementById('pass').value;
+	var req = new XMLHttpRequest();
+	req.onload = function() {
+		if (req.status === 200) {
+			if (req.responseText === 'OK') {
+				alert('Logged In');
+			} else alert(req.responseText);
+		} else alert('Error Communicating');
+	}
+	var queryString = 'user=' + user + '&pass=' + pass;
+	req.open('POST', '/login', true);
+	req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	req.send(queryString);
+}
+
+function register1() { //for checking if register username and passowrd is fine
+	var user = document.getElementById('user1').value;
+	var pass = document.getElementById('pass1').value;
+	var xhttp = new XMLHttpRequest();
+	if (user == "") {
+		alert("Please Enter Details!");
+	} else {
+		xhttp.onreadystatechange = function() { //Called when data returns from server
+			if (this.readyState == 4 && this.status == 200) {
+				if (this.responseText === "OK") {
+					register2();
+				} else alert(this.responseText);
+			}
+		}
+		var queryString = "user=" + user + "&pass=" + pass;
+		xhttp.open("POST", "/checkDetails", true);
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(queryString);
+	}
+}
+
+function register2() {
+	var user = document.getElementById('user1').value;
+	var pass = document.getElementById('pass1').value;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() { //Called when data returns from server
+		if (this.readyState == 4 && this.status == 200) {
+			if (this.responseText === "OK") {
+				alert("Registered!");
+			} else alert(this.responseText);
+		}
+	}
+	var queryString = "user=" + user + "&pass=" + pass;
+	xhttp.open("POST", "/register", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send(queryString);
 }
 		</script>
 </body>
