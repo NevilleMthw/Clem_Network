@@ -16,9 +16,6 @@
 					<a onclick='homeStart()'>Home</a>
 				</li>
 				<li>
-					<a href='#'>Account</a>
-				</li>
-				<li>
 					<a onclick='accountStart()'>Login/Register</a>
 				</li>
 				<li>
@@ -46,150 +43,177 @@
 	</div>
 		<script>
 function homeStart() {
-	//Set up XMLHttpRequest
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() { //Called when data returns from server
-		if (this.readyState == 4 && this.status == 200) {
-			//Convert JSON to a JavaScript object
-			var docBody = document.getElementsByTagName('body')[0]; //Only one body
-			docBody.innerHTML = '';
-			var main = document.createElement('main');
-			var head = document.createElement('p');
-			head.innerHTML = this.responseText
-			docBody.appendChild(head);
-			docBody.appendChild(main);
-		}
-	};
-	//Request data from all users
-	xhttp.open('GET', '/home', true);
-	xhttp.send();
+  //Set up XMLHttpRequest
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() { //Called when data returns from server
+    if ( this.readyState == 4 && this.status == 200 ) {
+      //Convert JSON to a JavaScript object
+      var docBody = document.getElementsByTagName( 'body' )[ 0 ]; //Only one body
+      docBody.innerHTML = '';
+      var main = document.createElement( 'main' );
+      var head = document.createElement( 'p' );
+      head.innerHTML = this.responseText
+      docBody.appendChild( head );
+      docBody.appendChild( main );
+    }
+  };
+  //Request data from all users
+  xhttp.open( 'GET', '/home', true );
+  xhttp.send();
 }
 /* Loads the data for the currently selected user.*/
 function accountStart() {
-	var docBody = document.getElementsByTagName("body")[0]; //Only one body
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() { //Called when data returns from server
-		if (this.readyState == 4 && this.status == 200) {
-			docBody.innerHTML = "";
-			var main = document.createElement("main");
-			var h1 = document.createElement("h1");
-			var head = document.createElement("p");
-			head.innerHTML = this.responseText;
-			docBody.appendChild(head);
-			docBody.appendChild(main);
-			docBody.appendChild(h1);
-			$('.info-item .btn').click(function() {
-				$('.container').toggleClass('log-in');
-			});
-			$('.container-form .btn').click(function() {
-				$('.container').addClass('active');
-			});
-		}
-	};
-	//Request the data for the specified user.
-	xhttp.open("GET", "/loginregister", true);
-	xhttp.send();
+  var docBody = document.getElementsByTagName( "body" )[ 0 ]; //Only one body
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() { //Called when data returns from server
+    if ( this.readyState == 4 && this.status == 200 ) {
+      docBody.innerHTML = "";
+      var main = document.createElement( "main" );
+      var h1 = document.createElement( "h1" );
+      var head = document.createElement( "p" );
+      head.innerHTML = this.responseText;
+      docBody.appendChild( head );
+      docBody.appendChild( main );
+      docBody.appendChild( h1 );
+      $( '.info-item .btn' ).click( function() {
+        $( '.container' ).toggleClass( 'log-in' );
+      } );
+      $( '.container-form .btn' ).click( function() {
+        $( '.container' ).addClass( 'active' );
+      } );
+    }
+  };
+  //Request the data for the specified user.
+  xhttp.open( "GET", "/loginregister", true );
+  xhttp.send();
 }
 
 function login() {
-	var user = document.getElementById('user').value;
-	var pass = document.getElementById('pass').value;
-	var req = new XMLHttpRequest();
-	req.onload = function() {
-	sessionStorage.loggedInUsername = user;
-	sessionStorage.setItem("Username", user);
-	sessionStorage.getItem(user);
-		if (req.status === 200) {
-			if (req.responseText === 'OK') {
-				alert('Logged In');
-			} else alert(req.responseText);
-		} else alert('Error Communicating');
-	}
-	var queryString = 'user=' + user + '&pass=' + pass;
-	req.open('POST', '/login', true);
-	req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-	req.send(queryString);
+  var user = document.getElementById( 'user' ).value;
+  var pass = document.getElementById( 'pass' ).value;
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    sessionStorage.loggedInUsername = user;
+    sessionStorage.setItem( "Username", user );
+    sessionStorage.getItem( user );
+    if ( req.status === 200 ) {
+      if ( req.responseText === 'OK' ) {
+        alert( 'Logged In' );
+      } else alert( req.responseText );
+    } else alert( 'Error Communicating' );
+  }
+  var queryString = 'user=' + user + '&pass=' + pass;
+  req.open( 'POST', '/login', true );
+  req.setRequestHeader( 'Content-type', 'application/x-www-form-urlencoded' );
+  req.send( queryString );
 }
 
 function register1() { //for checking if register username and passowrd is fine
-	var user = document.getElementById('user1').value;
-	var pass = document.getElementById('pass1').value;
-	var xhttp = new XMLHttpRequest();
-	if (user == "") {
-		alert("Please Enter Details!");
-	} else {
-		xhttp.onreadystatechange = function() { //Called when data returns from server
-			if (this.readyState == 4 && this.status == 200) {
-				if (this.responseText === "OK") {
-					register2();
-				} else alert(this.responseText);
-			}
-		}
-		var queryString = "user=" + user + "&pass=" + pass;
-		xhttp.open("POST", "/checkDetails", true);
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(queryString);
-	}
+  var user = document.getElementById( 'user1' ).value;
+  var pass = document.getElementById( 'pass1' ).value;
+  var xhttp = new XMLHttpRequest();
+  if ( user == "" ) {
+    alert( "Please Enter Details!" );
+  } else {
+    xhttp.onreadystatechange = function() { //Called when data returns from server
+      if ( this.readyState == 4 && this.status == 200 ) {
+        if ( this.responseText === "OK" ) {
+          register2();
+        } else alert( this.responseText );
+      }
+    }
+    var queryString = "user=" + user + "&pass=" + pass;
+    xhttp.open( "POST", "/checkDetails", true );
+    xhttp.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+    xhttp.send( queryString );
+  }
 }
 
 function register2() {
-	var user = document.getElementById('user1').value;
-	var pass = document.getElementById('pass1').value;
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() { //Called when data returns from server
-		if (this.readyState == 4 && this.status == 200) {
-			if (this.responseText === "OK") {
-				alert("Registered!");
-			} else alert(this.responseText);
-		}
-	}
-	var queryString = "user=" + user + "&pass=" + pass;
-	xhttp.open("POST", "/register", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send(queryString);
+  var user = document.getElementById( 'user1' ).value;
+  var pass = document.getElementById( 'pass1' ).value;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() { //Called when data returns from server
+    if ( this.readyState == 4 && this.status == 200 ) {
+      if ( this.responseText === "OK" ) {
+        alert( "Registered!" );
+      } else alert( this.responseText );
+    }
+  }
+  var queryString = "user=" + user + "&pass=" + pass;
+  xhttp.open( "POST", "/register", true );
+  xhttp.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+  xhttp.send( queryString );
 }
-function post(){
-	var docBody = document.getElementsByTagName("body")[0];//Only one body
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {//Called when data returns from server
-        if (this.readyState == 4 && this.status == 200) {
-          docBody.innerHTML = "";
-          var main = document.createElement("main");
-          var head = document.createElement("p");
-          head.innerHTML = this.responseText;
-          docBody.appendChild(head);
-		  docBody.appendChild(main);
-		  docBody.appendChild(p);
-          
-        }
-      };
 
-      //Request data from all users
-      xhttp.open('GET', '/upload', true);
-      xhttp.send();
+function post() {
+  var docBody = document.getElementsByTagName( "body" )[ 0 ]; //Only one body
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() { //Called when data returns from server
+    if ( this.readyState == 4 && this.status == 200 ) {
+      docBody.innerHTML = "";
+      var main = document.createElement( "main" );
+      var head = document.createElement( "p" );
+      head.innerHTML = this.responseText;
+      docBody.appendChild( head );
+      docBody.appendChild( main );
+      docBody.appendChild( p );
+    }
+  };
+  //Request data from all users
+  xhttp.open( 'GET', '/upload', true );
+  xhttp.send();
 }
-function display(){
-	var docBody = document.getElementsByTagName("body")[0];//Only one body
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {//Called when data returns from server
-        if (this.readyState == 4 && this.status == 200) {
-          docBody.innerHTML = "";
-          var main = document.createElement("main");
-		  var head = document.createElement("p");
-		  var division = document.createElement("div");
-		  division.innerHTML = this.responseText;
-		  docBody.appendChild(head);
-		  docBody.appendChild(division);
-		  docBody.appendChild(main);
-        }
-      };
 
-      //Request data from all users
-      xhttp.open('GET', '/display', true);
-      xhttp.send();
+function display() {
+  var docBody = document.getElementsByTagName( "body" )[ 0 ]; //Only one body
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() { //Called when data returns from server
+    if ( this.readyState == 4 && this.status == 200 ) {
+      docBody.innerHTML = "";
+      var main = document.createElement( "main" );
+      var head = document.createElement( "p" );
+      var division = document.createElement( "div" );
+      division.innerHTML = this.responseText;
+      docBody.appendChild( head );
+      docBody.appendChild( division );
+      docBody.appendChild( main );
+    }
+  };
+  //Request data from all users
+  xhttp.open( 'GET', '/display', true );
+  xhttp.send();
 }
-function alertUpload(){
-	alert("Uploaded");
+
+function searchFunc() {
+  var search = document.getElementById( 'searchBar' ).value;
+  var docBody = document.getElementsByTagName( "body" )[ 0 ]; //Only one body
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function() { //Called when data returns from server
+    if ( this.readyState == 4 && this.status == 200 ) {
+      docBody.innerHTML = "";
+      var main = document.createElement( "main" );
+      var head = document.createElement( "p" );
+      var division = document.createElement( "div" );
+      division.innerHTML = this.responseText;
+      docBody.appendChild( head );
+      docBody.appendChild( division );
+      docBody.appendChild( main );
+    }
+  };
+  var queryString = 'search=' + search;
+  req.open( 'POST', '/search', true );
+  req.setRequestHeader( 'Content-type', 'application/x-www-form-urlencoded' );
+  req.send( queryString );
+}
+
+function displayUsername() {
+  var username = sessionStorage.getItem( 'Username' );
+  var xhttp = new XMLHttpRequest();
+  var queryString = "user=" + username;
+  xhttp.open( "POST", "/uploadUsername", true );
+  xhttp.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+  xhttp.send( queryString );
 }
 
 		</script>

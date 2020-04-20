@@ -154,3 +154,70 @@ li a {
 	left: -100%;
 	opacity: 0;
 }
+#uploadButton {
+	border: 1% solid black;
+	color: black;
+	background-color:#B0BEC5;
+	padding: 5px 15px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-left: 42.2%;
+	margin-top:3%;
+  }
+
+  #uploadFile{
+	border: 2% solid black;
+	color: black;
+	padding: 5px 15px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 0%;
+	margin-left: 35%;
+  }
+  #uploadText{
+	  width: 30%;
+	  margin-top: 0%;
+	  margin-left: 31%;
+	  padding: 1%;
+	  border: 3px solid #B0BEC5;
+  }
+  #caption{
+	  margin-left: 38%;
+	  margin-top:3%;
+	  font-size: 25px;
+  }
+  #uploadTitle{
+	  margin-top: 10%;
+	  margin-left: 31%;
+	  font-size: 45px;
+  }
+#searchBar{
+	border: 3px solid #B0BEC5;
+	margin-left: 75%;
+	position: absolute;
+	margin-top: -8%;
+	width: 20%;
+	padding: 1%;
+}
+#searchButton{
+	border: 1% solid black;
+	color: black;
+	background-color:#B0BEC5;
+	padding: 5px 15px;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-left: 82%;
+	position: absolute;
+	margin-top: -4%;
+}
+#searchTitle{
+	margin-top: 10%;
+	font-size: 40px;
+	text-align: center;
+}
