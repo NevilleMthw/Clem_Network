@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+	<link href='../public/style.css' rel='stylesheet' type='text/css'>
+	<title>Post</title>
+</head>
+<body>
+	<div class='navigation'>
+		<nav>
+			<ul>
+				<li>
+					<a onclick='homeStart()'>Home</a>
+				</li>
+				<li>
+					<a onclick='accountStart()'>Login/Register</a>
+				</li>
+				<li>
+					<a onclick='post()'>Post</a>
+				</li>
+				<li>
+					<a onclick='display()'>Feed</a>
+				</li>
+			</ul>
+		</nav>
+    </div>
+    <h3 id = 'searchTitle'>FEED</h3>
+	<form>
+		<input id='searchBar' type='text'><br>
+		<input id='searchButton' onclick='searchFunc()' type='submit'>
+	</form>
+</body>
+</html>

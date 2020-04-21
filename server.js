@@ -158,6 +158,7 @@ function handlePosts(req, res) {
 app.post('/uploadUsername', handlePosts);
 
 function displayPosts(request, response) {
+
 	var con = mysql.createConnection({
 		host: "localhost",
 		user: "root",
@@ -177,7 +178,7 @@ function displayPosts(request, response) {
 			inputs += '<div><img src = "../images/' + u.path + '"></div><p>' + u.username + '</p><p>' + u.comment + '</p> </body></html>';
 		})
 		var display = '';
-		display = "<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1.0'> <link href='../public/style.css' rel='stylesheet' type='text/css'> <title>Post</title> </head> <body> <body> <div class='navigation'> <nav> <ul> <li> <a onclick='homeStart()'>Home</a> </li><li> <a onclick='accountStart()'>Login/Register</a> </li> <li> <a onclick= 'post()'>Post</a> </li> <li> <a onclick='display()'>Feed</a> </li> </ul> </nav> </div><input type = 'text' id= 'searchBar'/><br><input type='submit' onclick = 'searchFunc()'>";
+		display = "<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1.0'> <link href='../public/style.css' rel='stylesheet' type='text/css'> <title>Post</title> </head> <body> <body> <div class='navigation'> <nav> <ul> <li> <a onclick='homeStart()'>Home</a> </li> <li> <a onclick='accountStart()'>Login/Register</a> </li> <li> <a onclick= 'post()'>Post</a> </li> <li> <a onclick='display()'>Feed</a> </li> </ul> </nav> </div><h3 class = 'searchTitle'>FEED</h3><input type = 'text' id= 'searchBar'/><br><input type='submit' class= 'searchButton' onclick = 'searchFunc()'/></body></html>";
 		display = display + inputs;
 		var pathArray = request.url.split('/');
 		//Get the last part of the path
@@ -186,6 +187,7 @@ function displayPosts(request, response) {
 		if (pathEnd === 'display') {
 			response.send(display);
 		}
+		console.log(JSON.stringify(result));
 	});
 	con.end();
 }
@@ -207,10 +209,10 @@ function displaySearch(request, response) {
 		if (err) throw err;
 		var inputs = "";
 		result.forEach(function(u) {
-			inputs += '<div><img src = "../images/' + u.path + '"></div><p>' + u.username + '</p><p>' + u.comment + '</p> </body></html>';
+			inputs += '<div><img src = "../images/' + u.path + '"></div><p>' + u.username + '</p><p>' + u.comment + '</p>';
 		})
 		var display = '';
-		display = "<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1.0'> <link href='../public/style.css' rel='stylesheet' type='text/css'> <title>Post</title> </head> <body> <body> <div class='navigation'> <nav> <ul> <li> <a onclick='homeStart()'>Home</a> </li> <li> <a href='#'>Account</a> </li> <li> <a onclick='accountStart()'>Login/Register</a> </li> <li> <a onclick= 'post()'>Post</a> </li> <li> <a onclick='display()'>Feed</a> </li> </ul> </nav> </div><input type = 'text' id= 'searchBar'/><br><input type='submit' id = 'searchButton' onclick = 'searchFunc()'>";
+		display = "<!DOCTYPE html> <html lang='en'> <head> <meta charset='UTF-8'> <meta name='viewport' content='width=device-width, initial-scale=1.0'> <link href='../public/style.css' rel='stylesheet' type='text/css'> <title>Post</title> </head> <body> <body> <div class='navigation'> <nav> <ul> <li> <a onclick='homeStart()'>Home</a> </li> <li> <a onclick='accountStart()'>Login/Register</a> </li> <li> <a onclick= 'post()'>Post</a> </li> <li> <a onclick='display()'>Feed</a> </li> </ul> </nav> </div><h3 class = 'searchTitle'>FEED</h3><input type = 'text' id= 'searchBar'/><br><input type='submit' class= 'searchButton' onclick = 'searchFunc()'/></body></html>";
 		display = display + inputs;
 		var pathArray = request.url.split('/');
 		//Get the last part of the path
@@ -219,6 +221,7 @@ function displaySearch(request, response) {
 		if (pathEnd === 'search') {
 			response.send(display);
 		}
+		console.log(JSON.stringify(result)); 
 	});
 	con.end();
 }

@@ -203,7 +203,7 @@ li a {
 	width: 20%;
 	padding: 1%;
 }
-#searchButton{
+.searchButton{
 	border: 1% solid black;
 	color: black;
 	background-color:#B0BEC5;
@@ -216,8 +216,11 @@ li a {
 	position: absolute;
 	margin-top: -4%;
 }
-#searchTitle{
+.searchTitle{
 	margin-top: 10%;
 	font-size: 40px;
 	text-align: center;
+}
+#postComment{
+	font-size: 100px;
 }
